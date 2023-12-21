@@ -37,15 +37,18 @@ export default {
       intern: [
         {
           name: "Shehub",
-          id: "2018"
+          id: "2018",
+          mail: "shehub@gmail.com"
         },
         {
           name: "Mehedi",
-          id: "2016"
+          id: "2016",
+          mail: "mehedi@gmail.com"
         },
         {
           name: "Rimi",
-          id: "2015"
+          id: "2015",
+          mail: "rimi@gmail.com"
         }
       ]
     };

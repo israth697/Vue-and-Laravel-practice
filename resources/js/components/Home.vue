@@ -1,6 +1,10 @@
 <template>
-  <List :abc="intern" id="1"> </List>
-  
+  <List :abc="intern" id="1">
+      <template v-slot:result>
+        <h1>Hello {{ name }}</h1>
+      </template>
+  </List>
+
 </template>
 
 <script>

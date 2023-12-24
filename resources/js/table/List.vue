@@ -17,6 +17,7 @@
         </tr>
       </tbody>
     </table>
+    <slot name="result"></slot>
     </div>
 </template>
 

@@ -1,6 +1,5 @@
 <template>
     <!-- <List :abc="intern" id="1"> </List> -->
-
       <h1>
         <router-link to="/hello">Hello</router-link>
         <br>

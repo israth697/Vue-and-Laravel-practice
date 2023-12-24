@@ -12,7 +12,7 @@
       <tbody>
         <tr v-for="internlist in abc" :key="id">
          <td>{{ internlist.id }}</td>
-          <td>{{ internlist.name  }}</td>  
+          <td>{{ internlist.name }}</td>  
           <td>{{ internlist.mail  }}</td>  
         </tr>
       </tbody>

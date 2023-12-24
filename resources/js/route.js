@@ -3,6 +3,7 @@ import Home from './components/Home.vue';
 import Hell from './components/Hell.vue';
 import Profile from './components/Profile.vue';
 import Instagram from './components/Instagram.vue';
+import ComponentA from './components/ComponentA.vue';
 
 
 
@@ -33,6 +34,14 @@ const routes = [
         path: '/instagram',
         component: Instagram
     },
+    
+    {
+        name: 'componenta',
+        path: '/componenta',
+        component: ComponentA
+    },
+
+    
 
 ];
  const router = createRouter({

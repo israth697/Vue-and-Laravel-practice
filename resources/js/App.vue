@@ -9,6 +9,8 @@
         <router-link to="/profile">profile</router-link>
         <br>
         <router-link to="/instagram">Instagram profile</router-link>
+        <br>
+        <router-link to="/componenta">Details</router-link>
       </h1>
       
    <router-view></router-view>
@@ -23,20 +25,27 @@
 
 <script>
 
-// import List from './components/List.vue';
+
 
 export default {
   name: 'App',
-  // components: {
-  //   List
 
-  // },
-
-  data() {
+   data() {
     return {
-     
-    };
+      name: "Mouly",
+      web: "www.intagram.com",
+      address: "Chittagong"
+    }
   },
+
+  provide() {
+    return {
+      name: this.name,
+      web: this.web,
+      address: this.address
+    }
+  }
+  
 }
 </script>
 

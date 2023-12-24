@@ -4,6 +4,8 @@
         <p> <strong>Name:</strong>{{ name }}</p>
         <p> <strong>Web:</strong>{{ web }}</p>
         <p> <strong>Address:</strong>{{ address }}</p>
+
+        
        
     </div>
 </template>

@@ -4,6 +4,7 @@ import Hell from './components/Hell.vue';
 import Profile from './components/Profile.vue';
 import Instagram from './components/Instagram.vue';
 import ComponentA from './components/ComponentA.vue';
+import Watcher from './components/Watcher.vue';
 
 
 
@@ -39,6 +40,11 @@ const routes = [
         name: 'componenta',
         path: '/componenta',
         component: ComponentA
+    },
+    {
+        name: 'watcher',
+        path: '/watcher',
+        component: Watcher
     },
 
     

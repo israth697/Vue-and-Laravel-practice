@@ -10,6 +10,8 @@
         <router-link to="/instagram">Instagram profile</router-link>
         <br>
         <router-link to="/componenta">Details</router-link>
+        <br>
+          <router-link to="/watcher">Watcher</router-link>
       </h1>
       
    <router-view></router-view>

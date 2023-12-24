@@ -24,6 +24,7 @@
 <script>
 
 
+
 export default {
   name: "List",
   props: ["abc"],

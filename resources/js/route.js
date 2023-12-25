@@ -5,6 +5,8 @@ import Profile from './components/Profile.vue';
 import Instagram from './components/Instagram.vue';
 import ComponentA from './components/ComponentA.vue';
 import Watcher from './components/Watcher.vue';
+import Page from './components/Page.vue';
+import Details from './components/Student/Details.vue';
 
 
 
@@ -41,10 +43,23 @@ const routes = [
         path: '/componenta',
         component: ComponentA
     },
+
     {
         name: 'watcher',
         path: '/watcher',
         component: Watcher
+    },
+
+    {
+        name: 'page',
+        path: '/page',
+        component: Page
+    },
+
+    {
+        name: 'details',
+        path: '/details',
+        component: Details
     },
 
     

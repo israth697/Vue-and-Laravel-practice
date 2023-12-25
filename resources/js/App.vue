@@ -1,7 +1,7 @@
 <template>
     <!-- <List :abc="intern" id="1"> </List> -->
       <h1>
-        <router-link to="/hello">Hello</router-link>
+        <!-- <router-link to="/hello">Hello</router-link>
         <br>
         <router-link to="/hell">Hey</router-link>
         <br>
@@ -11,7 +11,11 @@
         <br>
         <router-link to="/componenta">Details</router-link>
         <br>
-          <router-link to="/watcher">Watcher</router-link>
+        <router-link to="/watcher">Watcher</router-link>
+        <br>
+        <router-link to="/page">Page</router-link> -->
+        
+        <router-link to="/details">Student</router-link>
       </h1>
       
    <router-view></router-view>

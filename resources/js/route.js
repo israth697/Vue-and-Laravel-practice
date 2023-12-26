@@ -7,6 +7,7 @@ import ComponentA from './components/ComponentA.vue';
 import Watcher from './components/Watcher.vue';
 import Page from './components/Page.vue';
 import Details from './components/Student/Details.vue';
+import Student_list from './components/Student/Student_list.vue';
 
 
 
@@ -60,6 +61,12 @@ const routes = [
         name: 'details',
         path: '/details',
         component: Details
+    },
+
+    {
+        name: 'student_list',
+        path: '/student_list',
+        component: Student_list
     },
 
     

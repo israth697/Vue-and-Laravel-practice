@@ -1,8 +1,12 @@
 <template>
     <div>
         <h1>Student From</h1>
+     
+       <router-link to="/student_list">View List</router-link>
+
         <form  id="form" method="post" @submit.prevent="submition" enctype="multipart/part-data">  
       <div class="form-group">
+        <br>
         <label for="image">Student Image</label>
         <br>
         <input name="image" type="file"  class="form-control-file" id="image">
@@ -57,8 +61,12 @@
 
 <script>
 import axios from 'axios';
+import Student_list from './Student_list.vue';
 export default {
-    name: 'Details',
+  name: 'Details',
+  component: {
+      Student_list
+    },
 
         data() {
             return {
@@ -81,7 +89,8 @@ export default {
         axios.post('VueLara/public/student-save', formData).then(res => {
           console.log(res);
         });
-        // console.log(this.students);   
+        // console.log(this.students); 
+
       }
     },
 

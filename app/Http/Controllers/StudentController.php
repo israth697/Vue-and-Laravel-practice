@@ -20,4 +20,11 @@ class StudentController extends Controller
 
         ]);
     }
+
+    function list(){
+        $student=Student::all();
+         return response()-> json($student);
+        
+    }
+
 }

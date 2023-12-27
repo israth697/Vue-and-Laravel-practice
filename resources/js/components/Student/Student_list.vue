@@ -3,6 +3,7 @@
         <table class="table">
       <thead>
         <tr>
+          <th scope="col">ID</th>
           <th scope="col">Name</th>
           <th scope="col">E-mail</th>
           <th scope="col">Address</th>
@@ -13,15 +14,18 @@
          </tr>
       </thead>
       <tbody>
-        <tr v-for="lists in list">
+        <tr v-for="lists in list" :key="id">
+
+        <td>{{ lists.id }}</td>
         <td>{{ lists.name }}</td>
         <td>{{ lists.email }}</td>
         <td>{{ lists.address }}</td>
         <td>{{ lists.gender }}</td>
         <td>{{ lists.dob }}</td>
         <td>{{ lists.phone }}</td>
-        <td><router-link to="/student_list">Edit</router-link></td>
-        <td><router-link to="/student_list">Delete</router-link></td>
+        <td><router-link :to='{path:"/student_edit/"+ lists.id}'>Edit</router-link></td>
+
+        <td><button @click="deletestudent(lists.id)" >Delete</button></td>
         </tr>
       </tbody>
     </table>
@@ -50,7 +54,24 @@ export default {
                 this.list = res.data;
                     console.log(this.list);
             });
-            }
+        },
+
+        deletestudent(studentId) {
+            if (confirm('do you want delete?')) {
+                axios.get(`VueLara/public/student-delete/${studentId}`).then(res => {
+                    alert(res.data.message);
+                    this.getlist();
+                })
+                    .catch(function (error) {
+                        if (error.response) {
+                            if (error.response.status == 404) {
+                                alert(error.response.data.message);
+                            }
+                        }
+
+                    });
+           }
+        },
     },
 }
 </script>

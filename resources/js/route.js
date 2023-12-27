@@ -8,6 +8,8 @@ import Watcher from './components/Watcher.vue';
 import Page from './components/Page.vue';
 import Details from './components/Student/Details.vue';
 import Student_list from './components/Student/Student_list.vue';
+import Student_edit from './components/Student/Student_edit.vue';
+import Teacher from './components/Teacher/Teacher.vue';
 
 
 
@@ -68,6 +70,17 @@ const routes = [
         path: '/student_list',
         component: Student_list
     },
+
+    {
+        name: 'student_edit',
+        path: '/student_edit',
+        component: Student_edit
+    },
+    // {
+    //     name: 'teacher',
+    //     path: '/teacher',
+    //     component: Teacher
+    // },
 
     
 

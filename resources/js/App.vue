@@ -16,7 +16,9 @@
         <router-link to="/page">Page</router-link> -->
         
         <router-link to="/details">Student</router-link>
-      </h1>
+        <br>
+        <!-- <router-link to="/details">Teacher</router-link> -->
+        </h1>
       
    <router-view></router-view>
 </template>

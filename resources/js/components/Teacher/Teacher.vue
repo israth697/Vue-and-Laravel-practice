@@ -20,7 +20,6 @@
         <input v-model="teacher.gender" type="radio" id="gender" name="gender" value="woman">
         <label for="gender">Female</label><br>
     </div> <br>
-    
     <!-- <div class="row">
                      <label>Skills:</label>
                     <div class="form-group">
@@ -52,7 +51,7 @@
       </div>
     </form>
     </div>
-</template>
+</template> 
 
 <script>
 import axios from 'axios';
@@ -64,7 +63,7 @@ export default {
                 name: '',
                 email: '',
                 gender: '',
-                // skill:[],
+                skill:'',
             },
         };
     },

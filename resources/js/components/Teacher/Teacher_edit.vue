@@ -1,7 +1,7 @@
 <template>
         <div>
-            <h1>Edit Teacher Information From</h1>
-           <!-- <router-link to="/teacher_list">Teacher List View</router-link> -->
+            <h1>Edit Teacher Information</h1>
+          
             <form id="teachUpdate">  
        <br>
           <div class="form-group">
@@ -49,6 +49,9 @@
           <div>
            <button type="submit" @click.prevent="teachUpdate" class="btn btn-primary">UPDATE</button>
           </div>
+<br>
+<br>
+     <router-link to="/teacher_list">Back On Teacher List</router-link>
         </form>
         </div>
 </template>

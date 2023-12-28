@@ -13,10 +13,6 @@ import Teacher from './components/Teacher/Teacher.vue';
 import Teacher_list from './components/Teacher/Teacher_list.vue';
 import Teacher_edit from './components/Teacher/Teacher_edit.vue';
 
-
-
-
-
 const routes = [
     
     {

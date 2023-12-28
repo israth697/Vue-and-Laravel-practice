@@ -46,6 +46,7 @@ class TeacherController extends Controller
                 'name' => $request->name,
                 'email' => $request->email,
                 'gender' => $request->gender,
+                // 'skill' => $request->skill,
             ]);
         } else {
             return response()->json([
@@ -57,6 +58,7 @@ class TeacherController extends Controller
 
     public function teacher_delete($id){
         $teacher = Teacher::find($id);
+        dd($teacher);
             if ($teacher) {
                  $teacher->delete();
                 return response()->json([

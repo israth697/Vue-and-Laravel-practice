@@ -61,12 +61,10 @@
 
 <script>
 import axios from 'axios';
-import Student_list from './Student_list.vue';
+
 export default {
   name: 'Details',
-  component: {
-      Student_list
-    },
+  
 
         data() {
             return {

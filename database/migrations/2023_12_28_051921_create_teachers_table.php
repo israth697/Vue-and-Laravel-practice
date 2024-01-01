@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('email');
             $table->string('gender');
             $table->string('skill');
+            $table->string('image');
             $table->timestamps();
         });
     }

@@ -6,6 +6,7 @@
           <th scope="col">ID</th>
           <th scope="col">Name</th>
           <th scope="col">E-mail</th>
+          <th scope="col">Image</th>
           <th scope="col">Gender</th>
           <th scope="col">Skill</th>
           <th scope="col">Action</th>
@@ -16,6 +17,9 @@
         <td>{{ information.id }}</td>
         <td>{{ information.name }}</td>
         <td>{{ information.email }}</td>
+        <td>
+            <img :src="'http://localhost/VueLara/public/storage/uploads/'+ information.image" width="100" >
+        </td>
         <td>{{ information.gender }}</td>
         <td>{{ information.skill }}</td>
 

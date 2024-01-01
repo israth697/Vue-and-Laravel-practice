@@ -8,10 +8,16 @@ use Illuminate\Http\Request;
 class TeacherController extends Controller
 {
     public function teachers_save(Request $request){
+        $teacher='';
+        if($request->hasFile('image')){
+            $teacher=date('Ymdhis').'.'.$request->file('image')->getClientOriginalExtension();
+            $request->file('image')->storeAs('uploads/', $teacher);
+        }
         Teacher::create([
             'name' => $request->name,
             'email' => $request->email,
             'gender' => $request->gender,
+            'image' => $teacher,
             'skill' =>json_encode($request->skill),
         ]);
     }

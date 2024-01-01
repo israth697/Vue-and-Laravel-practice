@@ -12,6 +12,10 @@
         <label for="email">Email:</label>
         <input type="email" name="email" v-model="teacher.email" class="form-control" id="email" placeholder="Write Teacher Email">
       </div><br>
+      <div class="form-group">
+        <label for="image">Image:</label>
+        <input type="file" name="image" v-bind="teacher.image" class="form-control" id="image" placeholder="Write Teacher Image">
+      </div><br>
       <div data-mdb-input-init class="form-group" >
         <label for="gender">Gender:</label>
         <br>
@@ -62,6 +66,7 @@ export default {
             teacher: {
                 name: '',
                 email: '',
+                image: '',
                 gender: '',
                 skill:[],
             },

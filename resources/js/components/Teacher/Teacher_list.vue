@@ -1,5 +1,6 @@
 <template>
-    <div>
+    <div> 
+        <!--4000+3000+  -->
         <table class="table">
       <thead>
         <tr>
@@ -21,8 +22,11 @@
             <img :src="'http://localhost/VueLara/public/storage/uploads/'+ information.image" width="100" >
         </td>
         <td>{{ information.gender }}</td>
-        <td>{{ information.skill }}</td>
+        <br>
+        <div v-for="(item,index) in JSON.parse(information.skill)" :key="index">
+            {{item}}
 
+        </div>
         <td>
             <div @click.prevent="edit">
             <router-link :to='{path:"teacher_edit/"+ information.id}'>Edit</router-link>

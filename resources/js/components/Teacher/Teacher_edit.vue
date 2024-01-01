@@ -1,59 +1,66 @@
 <template>
-        <div>
-            <h1>Edit Teacher Information</h1>
-          
-            <form id="teachUpdate">  
-       <br>
-          <div class="form-group">
-            <label for="name">Name:</label>
-            <input type="name" name="name" v-model="teacher_data.name" class="form-control" id="name"  placeholder="Write Teacher Name" >
-          </div><br>
-          <div class="form-group">
-            <label for="email">Email:</label>
-            <input type="email" name="email" v-model="teacher_data.email" class="form-control" id="email" placeholder="Write Teacher Email">
-          </div><br>
-          <div data-mdb-input-init class="form-group" >
-            <label for="gender">Gender:</label>
+    <div>
+        <h1>Edit Teacher Information</h1>
+
+        <form id="teachUpdate">
             <br>
-            <input v-model="teacher_data.gender" type="radio" id="gender" name="gender" value="man">
-            <label for="gender">Male</label><br>
-            <input v-model="teacher_data.gender" type="radio" id="gender" name="gender" value="woman">
-            <label for="gender">Female</label><br>
-        </div> <br>
-        <!-- <div class="row">
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="name" name="name" v-model="teacher_data.name" class="form-control" id="name"
+                    placeholder="Write Teacher Name">
+            </div><br>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" name="email" v-model="teacher_data.email" class="form-control" id="email"
+                    placeholder="Write Teacher Email">
+            </div><br>
+            <div class="form-group">
+                <label for="image">Image:</label>
+                <img :src="'http://localhost/VueLara/public/storage/uploads/' + teacher_data.image" width="200">
+                <input type="file" name="image" class="form-control" id="image" placeholder="Write Teacher Image">
+            </div><br>
+            <div data-mdb-input-init class="form-group">
+                <label for="gender">Gender:</label>
+                <br>
+                <input v-model="teacher_data.gender" type="radio" id="gender" name="gender" value="man">
+                <label for="gender">Male</label><br>
+                <input v-model="teacher_data.gender" type="radio" id="gender" name="gender" value="woman">
+                <label for="gender">Female</label><br>
+            </div> <br>
+            <!-- <div class="row">
                      <label>Skills:</label>
                     <div class="form-group">
                         <label for="laravel">
-                            <input v-model="teacher.skill" type="checkbox" id="laravel" value="laravel">Laravel
+                            <input v-model="teacher_data.skill" type="checkbox" id="laravel" value="laravel" name="skill[]">Laravel
                         </label>
                         <label for="codeigniter">
-                            <input v-model="teacher.skill" type="checkbox" id="codeigniter" value="codeigniter">Codeigniter
+                            <input v-model="teacher_data.skill" type="checkbox" id="codeigniter" value="codeigniter" name="skill[]">Codeigniter
                         </label>
                         <br>
                         <label for="ajax">
-                            <input v-model="teacher.skill" type="checkbox" id="ajax" value="ajax">Ajax
+                            <input v-model="teacher_data.skill" type="checkbox" id="ajax" value="ajax" name="skill[]">Ajax
                         </label>
                         <label for="vuejs">
-                            <input v-model="teacher.skill" type="checkbox" id="vuejs" value="vuejs">VUE JS
+                            <input v-model="teacher_data.skill" type="checkbox" id="vuejs" value="vuejs" name="skill[]">VUE JS
                         </label>
                         <br>
                         <label for="mysql">
-                            <input v-model="teacher.skill" type="checkbox" id="mysql" value="mysql">MySQL
+                            <input v-model="teacher_data.skill" type="checkbox" id="mysql" value="mysql" name="skill[]">MySQL
                         </label>
                         <label for="api">
-                            <input v-model="teacher.skill" type="checkbox" id="api" value="api">API
+                            <input v-model="teacher_data.skill" type="checkbox" id="api" value="api" name="skill[]">API
                         </label>
                     </div>
                 </div> -->
-                    <br>
-          <div>
-           <button type="submit" @click.prevent="teachUpdate" class="btn btn-primary">UPDATE</button>
-          </div>
-<br>
-<br>
-     <router-link to="/teacher_list">Back On Teacher List</router-link>
+            <br>
+            <div>
+                <button type="submit" @click.prevent="teachUpdate" class="btn btn-primary">UPDATE</button>
+            </div>
+            <br>
+            <br>
+            <router-link to="/teacher_list">Back On Teacher List</router-link>
         </form>
-        </div>
+    </div>
 </template>
 
 <script>
@@ -61,47 +68,53 @@ import axios from 'axios';
 export default {
     name: 'Teacher_edit',
 
-        data() {
-            return {
-            
-                teacher_data: [],
-                teacher_id:'',
-            };
-        },
+    data() {
+        return {
+
+            teacher_data: [],
+            teacher_id: '',
+            // skill:[
+            //     { name: 'laravel', check: false },
+            //     { name: 'codeigniter', check: false },
+            //     { name: 'ajax', check: false },
+            //     { name: 'vuejs', check: false },
+            //     { name: 'mysql', check: false },
+            //     { name: 'api', check: false },
+            // ],
+        };
+    },
     mounted() {
-        console.log('hgvj')
+        // console.log('hgvj')
         this.teacher_id = this.$route.params.id;
-            this.saveTeacher(this.$route.params.id);
-            // console.log('ok',this.teacher_id)
+        this.saveTeacher(this.$route.params.id);
+        // console.log('ok',this.teacher_id)
 
+    },
+    methods: {
+        saveTeacher(teacherid) {
+            axios.get("http://localhost/VueLara/public/teacher-edit/" + teacherid).then((res) => {
+                this.teacher_data = res.data;
+                console.log(this.teacher_data);
+            });
         },
-        methods: {
-            saveTeacher(teacherid) {
-                axios.get("http://localhost/VueLara/public/teacher-edit/"+teacherid).then((res) => {
-                    this.teacher_data = res.data;
-                    console.log(this.teacher_data);
-                });
-            },
 
-            teachUpdate() {
-                
-            console.log('ok');
+        teachUpdate() {
+
+
             const teacher_update = document.getElementById('teachUpdate');
-            let update = new FormData(teachUpdate);
-            console.log(update);
-            axios.post('http://localhost/VueLara/public/teacher-update/'+ this.teacher_data.id, update).then((res) => {
-                // console.log(res);
+            let update = new FormData(teacher_update);
+            // console.log(update);
+            axios.post('http://localhost/VueLara/public/teacher-update/' + this.teacher_data.id, update).then((res) => {
+                console.log('res');
                 alert('Update Successfully');
             });
-           
-                
-            },
+
+
         },
-    
-    
+    },
+
+
 }
 </script>
 
-<style lang="scss" scoped>
-
-</style>
+<style lang="scss" scoped></style>

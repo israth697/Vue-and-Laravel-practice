@@ -7,14 +7,17 @@
       <div class="form-group">
         <label for="name">Name:</label>
         <input type="name" name="name" v-model="teacher.name" class="form-control" id="name" placeholder="Write Teacher Name">
+        <small v-if="errors.name" class="text-danger">{{ errors.name }}</small>
       </div><br>
       <div class="form-group">
         <label for="email">Email:</label>
         <input type="email" name="email" v-model="teacher.email" class="form-control" id="email" placeholder="Write Teacher Email">
+        <small v-if="errors.email" class="text-danger">{{ errors.email }}</small>
       </div><br>
       <div class="form-group">
         <label for="image">Image:</label>
         <input type="file" name="image" v-bind="teacher.image" class="form-control" id="image" placeholder="Write Teacher Image">
+        <!-- <small v-if="errors.image" class="text-danger">{{ errors.image }}</small> -->
       </div><br>
       <div data-mdb-input-init class="form-group" >
         <label for="gender">Gender:</label>
@@ -70,19 +73,53 @@ export default {
                 gender: '',
                 skill:[],
             },
+            errors:{},
         };
     },
     methods: {
-        submission() {
-            var form = document.getElementById('form');
-            var formData = new FormData(form);
-            axios.post('VueLara/public/teacher_save', formData).then(res => {
-                console.log(res);
-                alert('Store Successfully');
 
-                // retrive to one page to one page
-                this.$router.push({ path: "/teacher_list" });
-            });
+        submission() {
+            if (this.validate()==false) {
+                var form = document.getElementById('form');
+                var formData = new FormData(form);
+                axios.post('VueLara/public/teacher_save', formData).then(res => {
+                    console.log(res);
+                    alert('Store Successfully');
+                    // retrive to one page to one page
+                    this.$router.push({ path: "/teacher_list" });
+                });
+            }
+            
+        },
+
+        validate() {
+            var errcount = 0;
+            if (this.teacher.name == '' || null) {
+                errcount += 1
+                this.errors.name = 'Name is required'
+            }
+            if (this.teacher.email == '' || null) {
+                errcount += 1
+                this.errors.email = 'Email is required'
+            }
+            if (this.teacher.image == '' || null) {
+                errcount += 1
+                this.errors.image = 'image is required'
+            }
+            if (this.teacher.gender == '' || null) {
+                errcount += 1
+                this.errors.gender = 'gender is required'
+            }
+            // if (this.teacher.skill == false) {
+            //     errcount += 1
+            //     this.errors.skill = 'skill is required'
+            // }
+
+            if (errcount > 0) {
+                return false;
+            }
+
+            return true;
         }
     },
 }

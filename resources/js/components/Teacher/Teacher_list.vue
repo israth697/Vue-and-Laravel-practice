@@ -7,7 +7,7 @@
           <th scope="col">Name</th>
           <th scope="col">E-mail</th>
           <th scope="col">Gender</th>
-          <!-- <th scope="col">Skill</th> -->
+          <th scope="col">Skill</th>
           <th scope="col">Action</th>
          </tr>
       </thead>
@@ -17,7 +17,7 @@
         <td>{{ information.name }}</td>
         <td>{{ information.email }}</td>
         <td>{{ information.gender }}</td>
-        <!-- <td>{{ information.skill }}</td> -->
+        <td>{{ information.skill }}</td>
 
         <td>
             <div @click.prevent="edit">

@@ -20,31 +20,31 @@
         <input v-model="teacher.gender" type="radio" id="gender" name="gender" value="woman">
         <label for="gender">Female</label><br>
     </div> <br>
-    <!-- <div class="row">
+    <div class="row">
                      <label>Skills:</label>
                     <div class="form-group">
                         <label for="laravel">
                             <input v-model="teacher.skill" type="checkbox" id="laravel" value="laravel">Laravel
                         </label>
                         <label for="codeigniter">
-                            <input v-model="teacher.skill" type="checkbox" id="codeigniter" value="codeigniter">Codeigniter
+                            <input v-model="teacher.skill" type="checkbox" id="codeigniter" value="codeigniter" name="skill[]">Codeigniter
                         </label>
                         <br>
                         <label for="ajax">
-                            <input v-model="teacher.skill" type="checkbox" id="ajax" value="ajax">Ajax
+                            <input v-model="teacher.skill" type="checkbox" id="ajax" value="ajax" name="skill[]">Ajax
                         </label>
                         <label for="vuejs">
-                            <input v-model="teacher.skill" type="checkbox" id="vuejs" value="vuejs">VUE JS
+                            <input v-model="teacher.skill" type="checkbox" id="vuejs" value="vuejs" name="skill[]">VUE JS
                         </label>
                         <br>
                         <label for="mysql">
-                            <input v-model="teacher.skill" type="checkbox" id="mysql" value="mysql">MySQL
+                            <input v-model="teacher.skill" type="checkbox" id="mysql" value="mysql" name="skill[]">MySQL
                         </label>
                         <label for="api">
-                            <input v-model="teacher.skill" type="checkbox" id="api" value="api">API
+                            <input v-model="teacher.skill" type="checkbox" id="api" value="api" name="skill[]">API
                         </label>
                     </div>
-                </div> -->
+                </div> 
                 <br>
       <div>
        <button type="submit" class="btn btn-primary">SUBMIT</button>
@@ -63,7 +63,7 @@ export default {
                 name: '',
                 email: '',
                 gender: '',
-                skill:'',
+                skill:[],
             },
         };
     },
@@ -74,6 +74,9 @@ export default {
             axios.post('VueLara/public/teacher_save', formData).then(res => {
                 console.log(res);
                 alert('Store Successfully');
+
+                // retrive to one page to one page
+                this.$router.push({ path: "/teacher_list" });
             });
         }
     },

@@ -12,7 +12,7 @@ class TeacherController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'gender' => $request->gender,
-            // 'skill' => $request->skill,
+            'skill' =>json_encode($request->skill),
         ]);
     }
 
@@ -58,7 +58,7 @@ class TeacherController extends Controller
 
     public function teacher_delete($id){
         $teacher = Teacher::find($id);
-        dd($teacher);
+        // dd($teacher);
             if ($teacher) {
                  $teacher->delete();
                 return response()->json([

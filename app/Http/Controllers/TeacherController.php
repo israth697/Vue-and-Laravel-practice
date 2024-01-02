@@ -10,6 +10,14 @@ class TeacherController extends Controller
 {
     public function teachers_save(Request $request)
     {
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required',
+            'gender' => 'required',
+            'image' => 'required',
+            'skill' => 'required',
+        ]);
+
         $teacher = '';
         if ($request->hasFile('image')) {
             $teacher = date('Ymdhis') . '.' . $request->file('image')->getClientOriginalExtension();

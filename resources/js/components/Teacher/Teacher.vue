@@ -18,9 +18,10 @@
           <div class="form-group">
             <label for="image">Image:</label>
             <input type="file" name="image" v-bind="teacher.image" class="form-control" id="image" placeholder="Write Teacher Image">
-            <small v-if="errors.image" class="text-danger">{{ errors.image }}</small>
+            <!-- <small v-if="errors.image" class="text-danger">{{ errors.image }}</small> -->
           </div><br>
-          <div data-mdb-input-init class="form-group" >
+          <div data-mdb-input-init clas
+          s="form-group" >
             <label for="gender">Gender:</label>
             <br>
             <input v-model="teacher.gender" type="radio" id="gender" name="gender" value="man">
@@ -34,7 +35,7 @@
                          <label>Skills:</label>
                         <div class="form-group">
                             <label for="laravel">
-                                <input v-model="teacher.skill" type="checkbox" id="laravel" value="laravel">Laravel
+                                <input v-model="teacher.skill" type="checkbox" id="laravel" value="laravel" >Laravel
                             </label>
                             <label for="codeigniter">
                                 <input v-model="teacher.skill" type="checkbox" id="codeigniter" value="codeigniter" name="skill[]">Codeigniter

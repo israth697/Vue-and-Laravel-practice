@@ -27,32 +27,27 @@
                 <input v-model="teacher_data.gender" type="radio" id="gender" name="gender" value="woman">
                 <label for="gender">Female</label><br>
             </div> <br>
-            <!-- <div class="row">
-                     <label>Skills:</label>
-                    <div class="form-group">
-                        <label for="laravel">
-                            <input v-model="teacher_data.skill" type="checkbox" id="laravel" value="laravel" name="skill[]">Laravel
-                        </label>
-                        <label for="codeigniter">
-                            <input v-model="teacher_data.skill" type="checkbox" id="codeigniter" value="codeigniter" name="skill[]">Codeigniter
-                        </label>
-                        <br>
-                        <label for="ajax">
-                            <input v-model="teacher_data.skill" type="checkbox" id="ajax" value="ajax" name="skill[]">Ajax
-                        </label>
-                        <label for="vuejs">
-                            <input v-model="teacher_data.skill" type="checkbox" id="vuejs" value="vuejs" name="skill[]">VUE JS
-                        </label>
-                        <br>
-                        <label for="mysql">
-                            <input v-model="teacher_data.skill" type="checkbox" id="mysql" value="mysql" name="skill[]">MySQL
-                        </label>
-                        <label for="api">
-                            <input v-model="teacher_data.skill" type="checkbox" id="api" value="api" name="skill[]">API
-                        </label>
-                    </div>
-                </div> -->
-            <br>
+            <strong>Skills:</strong>
+                    <!-- {{ skills }} -->
+                    <div v-for="(item, index) in skills" :key="index">
+                        <div class="form-check form-check-inline">
+                            <span v-if="teacher_data.skill.includes(item)">
+                                <input class="form-check-input" type="checkbox" name="skill[]" id="inlineCheckbox1"
+                                    :value="item" :checked="true" />
+                                <label class="form-check-label" for="inlineCheckbox1">{{ item }}</label>
+                            </span>
+                            <span v-else>
+                                <input class="form-check-input" type="checkbox" name="skill[]" id="inlineCheckbox1"
+                                    :value="item" :checked="false" />
+                                <label class="form-check-label" for="inlineCheckbox1">{{ item }}</label>
+                            </span>
+
+                        </div>
+          </div>
+           
+
+                   
+            
             <div>
                 <button type="submit" @click.prevent="teachUpdate" class="btn btn-primary">UPDATE</button>
             </div>
@@ -70,31 +65,41 @@ export default {
 
     data() {
         return {
-
-            teacher_data: [],
+           
+            teacher_data: {
+                 name: '',
+                email: '',
+                image: '',
+                gender: '',
+                skill: [],
+            },
             teacher_id: '',
-            // skill:[
-            //     { name: 'laravel', check: false },
-            //     { name: 'codeigniter', check: false },
-            //     { name: 'ajax', check: false },
-            //     { name: 'vuejs', check: false },
-            //     { name: 'mysql', check: false },
-            //     { name: 'api', check: false },
-            // ],
+            
+            skills: ['laravel', 'codeigniter', 'ajax', 'vuejs', 'mysql', 'api'],
         };
+
+        
     },
+
     mounted() {
         // console.log('hgvj')
         this.teacher_id = this.$route.params.id;
-        this.saveTeacher(this.$route.params.id);
+        // this.saveTeacher(this.$route.params.id);
         // console.log('ok',this.teacher_id)
 
     },
     methods: {
         saveTeacher(teacherid) {
+console.log("get teacher");
             axios.get("http://localhost/VueLara/public/teacher-edit/" + teacherid).then((res) => {
                 this.teacher_data = res.data;
+                this.teacher_data.name = res.data.name;
+                this.teacher_data.email = res.data.email;
+                // this.teacher_data.image = res.data.image;
+                this.teacher_data.gender = res.data.gender;
+                this.teacher_data.skill=JSON.parse(res.data.skill)
                 console.log(this.teacher_data);
+                
             });
         },
 
@@ -107,13 +112,14 @@ export default {
             axios.post('http://localhost/VueLara/public/teacher-update/' + this.teacher_data.id, update).then((res) => {
                 console.log('res');
                 alert('Update Successfully');
+                this.$router.push({ path: "/teacher" });
             });
-
-
-        },
+        },  
     },
 
-
+     created() {
+        this.saveTeacher(this.$route.params.id);
+     },
 }
 </script>
 

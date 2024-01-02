@@ -26,3 +26,4 @@ Route::get('/teacher-edit/{id}', [TeacherController::class, 'teacher_edit'])->na
 Route::post('/teacher-update/{id}', [TeacherController::class, 'teacher_update'])->name('teacher.update');
 
 Route::get('/teacher_delete/{id}', [TeacherController::class, 'teacher_delete'])->name('teacher.delete');
+

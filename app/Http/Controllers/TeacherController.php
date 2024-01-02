@@ -34,7 +34,7 @@ class TeacherController extends Controller
 
     public function teachers_list()
     {
-        $teacher = Teacher::all();
+        $teacher = Teacher::orderby('id','DESC')->take(100)->get();
         // dd($teacher);
         return response()->json($teacher);
     }
@@ -55,20 +55,26 @@ class TeacherController extends Controller
     public function teacher_update(Request $request, $id)
     {
         // dd($request->name);
-        // $request->validate([
-        //     'name' => 'required',
-        //     'email' => 'required|email',
-        //     'gender' => 'required',
-        //     // 'skill' => 'required',
-        // ]);
-        $teacher_image = '';
-        if ($request->hasFile('image')) {
-            $teacher_image = date('Ymdhis') . '.' . $request->file('image')->getClientOriginalExtension();
-            $request->file('image')->storeAs('uploads/', $teacher_image);
-        }
+        $request->validate([
+            // 'name' => 'required',
+            // 'email' => 'required',
+            // 'gender' => 'required',
+            // 'image' => 'required',
+            'skill' => 'required',
+        ]);
+        // $teacher_image = '';
+       
         // dd($teacher_image);
         $teacher = Teacher::find($id);
+        $teacher_image = $teacher->image;
+        if ($request->hasFile('image')) {
+            $teacher_image = date('Ymdhis') . '.' . $request->file('image')->getClientOriginalExtension();
+            $request->file('image')->storeAs('uploads/',
+                $teacher_image
+            );
+        }
         // dd($teacher);
+        
         if ($teacher) {
             $teacher->update([
                 'name' => $request->name,
